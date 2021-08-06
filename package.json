@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w",
+    "start": "live-server"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1",
+    "node-sass": "^6.0.1"
+  },
+  "name": "ecotree",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hitaku94/ecoTree-interview-pagecode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hitaku94/ecoTree-interview-pagecode/issues"
+  },
+  "homepage": "https://github.com/Hitaku94/ecoTree-interview-pagecode#readme",
+  "description": ""
+}
