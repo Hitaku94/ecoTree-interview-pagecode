@@ -1,13 +1,42 @@
-/*
-COLORS:
+// Mixin
+@mixin respond($breakpoint) {
+    @if $breakpoint == phone {
+        @media only screen and (max-width: 600px) { @content };    
+    }
+    @if $breakpoint == tab-port {
+        @media only screen and (max-width: 900px) { @content };   
+    }
+    @if $breakpoint == mini-tab-land {
+        @media only screen and (max-width: 1000px) { @content }; 
+    }
+    @if $breakpoint == tab-land {
+        @media only screen and (max-width: 1100px) { @content };  
+    }
+    @if $breakpoint == mini-desktop {
+        @media only screen and (max-width: 1200px) { @content };
+    }
+    @if $breakpoint == small-desktop {
+        @media only screen and (max-width: 1300px) { @content };   
+    }
+    @if $breakpoint == medium-desktop {
+        @media only screen and (max-width: 1400px) { @content };   
+    }
+    @if $breakpoint == desktop {
+        @media only screen and (max-width: 1500px) { @content };   
+    }
+    @if $breakpoint == large-desktop {
+        @media only screen and (max-width: 1600px) { @content };   
+    }
+    @if $breakpoint == big-desktop {
+        @media only screen and (max-width: 1700px) { @content };   
+    }
+    @if $breakpoint == giant-desktop {
+        @media only screen and (max-width: 1800px) { @content };   
+    }
+}
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
+// Variable
 
-*/
-
-/*Variable */
     // font-size
 $font-size-default: 62.5%; // 10px
 
@@ -38,7 +67,40 @@ $color-shadow: #173E111F;
 
 html {
     font-size: $font-size-default;
-   
+    @include respond(giant-desktop) {
+        font-size: 59.25%; 
+    }
+    @include respond(big-desktop) {
+        font-size: 56.25%; 
+    }
+    @include respond(large-desktop) {
+        font-size: 53%;
+    }
+    @include respond(desktop) {
+        font-size: 50%;
+    }
+    @include respond(medium-desktop) {
+        font-size: 47%;
+    }
+    @include respond(small-desktop) { 
+        font-size: 43.75%; 
+    }
+    @include respond(mini-desktop) { 
+        font-size: 40.75%; 
+    }
+    @include respond(tab-land) { 
+        font-size: 37.5%; 
+    }
+    @include respond(mini-tab-land) { 
+        font-size: 34.5%; 
+    }
+    @include respond(tab-port) { 
+        font-size: 31.25%; 
+    }
+    @include respond(phone) { 
+        font-size: $font-size-default;
+    }
+    
 }
 
 body {
@@ -46,10 +108,15 @@ body {
 }
 
 .sectionTop {
-  position: relative;
+    position: relative;
     display: flex;
     justify-content: space-evenly;
     padding: 8rem 20rem 0;
+    @include respond(phone) {
+        flex-direction: column; 
+        padding: 2rem 2rem;
+        align-items: space-between;
+    }
     .sectionTop__background {
         position: absolute;
         top: 0;
@@ -57,36 +124,65 @@ body {
         background-color: $color-light-background;
         height: 80%;
         width: 100%;
-       
+        @include respond(phone) {
+            height: 85%;
+        }
     }
-    
 }
 
 
 .left__text-box {
     position: relative;
     margin-top: 8rem;
-  
+    @include respond(phone) {
+        margin-top: 3rem; 
+        padding-left: 2rem;
+    }
+    .left__hr {
+        @include respond(phone) {
+        width: 5rem;
+        height: 5px;
+        background-color: $color-green;
+        border-radius: 3px;
+        border: none;
+        margin: 1rem auto 0.5rem;
+        }
+        @media only screen and (min-width: 601px) {
+            display: none;
+        };   
+    }
     .left__title {
         font-size: $font-size-small;
         color: $color-font-title;
+        text-transform: uppercase;
+        @include respond(phone) {
+            text-align: center;
+        }
     }
     .left__heading {
         font-size: $font-size-grande;
         color: $color-font-bold;
         width: 38rem;
         margin: 2rem 0;
+        @include respond(phone) {
+        width: 100%;
+          margin-top: 1rem;
+        }
     }
     .left__text {
         font-size: $font-size-medium;
         color: $color-font-text;
         width: 59rem;
+        @include respond(phone) {
+            width: 100%;
+            line-height: 3.5rem;
+        }
     }
     .left__btn {
         color: $color-white;
         font-size: $font-size-medium;
-        width: 277px;
-        height: 83px;
+        width: 27rem;
+        height: 8rem;
         border-radius: 9px;
         background-color: $color-green;
         border: none;
@@ -95,6 +191,11 @@ body {
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        @include respond(phone) {
+            width: 20rem;
+            height: 4.5rem;
+            margin-top: 4rem;
+        }
         .left__btn--img {
             width: 2rem;
             margin-left: 1.5rem;
@@ -105,6 +206,9 @@ body {
 .left__img-box {
     margin: 8rem 10rem 0;
     z-index: 2;
+    @include respond(phone) {
+        display: none;
+    }
 }
 .right__card {
     position: relative;
@@ -117,6 +221,20 @@ body {
     box-shadow: 0px 3px 76px #173E111F;
     border-radius: 6px;
     min-width: 50rem;
+    @include respond(phone) {
+        min-width: 90%;
+        margin-top: 10rem;
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 2rem;
+        box-shadow: 0px 3px 76px #173E111F;
+    }
+}
+
+.bruno {
+    @include respond(phone) {
+        display: none;
+    }
 }
 
 .right__text-box {
@@ -135,17 +253,30 @@ body {
     h5 {
         font-size: $font-size-medium;
     }
+    .righ__name--mobile {
+        @include respond(phone) {
+            text-align: center;
+        }
+        @media only screen and (min-width: 601px) {
+            display: none;
+        };   
+    }
+    .righ__name--desktop {
+        @include respond(phone) {
+            display: none;
+        }
+    }
     
 }
 
 .right__img-box {
    
-    width: 100px;
-    height: 100px;
+    width: 10rem;
+    height: 10rem;
    padding-bottom: 1rem;
     .right__img {
-        width: 100px;
-        height: 100px;
+        width: 10rem;
+        height: 10rem;
         object-fit: cover;
         border-radius: 50%;
        
@@ -155,22 +286,36 @@ body {
 // section bottom 
 
 .sectionBottom {
-    margin: 5rem 0 10rem;
+    margin: 5rem 0 25rem;
+    @include respond(phone) {
+        margin-bottom: 0;
+    }
 }
 
 .how__text-box {
     padding-left: 20rem;
+    @include respond(phone) {
+        text-align: center;
+        width: 75%;
+        margin: auto;
+        padding: 0;
+    }
     .how__hr {
         width: 5rem;
         height: 5px;
         background-color: $color-green;
         border-radius: 3px;
         border: none;
+        @include respond(phone) {
+            margin: auto;
+            
+        }
     }
     .how__title {
         font-size: $font-size-small;
         color: $color-font-title;
         margin: 1rem 0;
+        text-transform: uppercase;
     }
     .how__heading {
         font-size: $font-size-grande;
@@ -178,21 +323,147 @@ body {
     }
 }
 
+.how__graph {
+    position: relative;
+   
+}
+
 .how__graph--img {
     width: 75%;
+    @include respond(phone) {
+        display: none;
+        
+    }
+}
+
+.how__graph--img--mobile {
+    width: 100%;
+    object-fit: cover;
+    @media only screen and (min-width: 601px) {
+        display: none;
+    };   
 }
 
 .how__info-box {
     width: 35rem;
-    .how__img-box {
-   
-
-       .how__img {
+    position: relative;
+    @include respond(phone) {
         width: 100%;
-        height: auto;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        
+    }
+.how__info-container {
+    @include respond(phone) {
+        margin: 0 1rem;
+        padding-left: 1rem;
+    }
+}
+    .how__img-box {
+        width: 15rem;
+        height: 8rem;
+        @include respond(phone) {
+            width: 20rem;
+            height: 20rem;
+        }
+       .how__img {
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        
        }
+    }
+    
+    .how__info-text {
+        margin-left: 4.5rem;
+        font-size: $font-size-mini;
+        @include respond(phone) {
+            margin-left: 0;
+            line-height: 2.5rem;
+        }
+    }
+    
+    .how__info-heading {
+        margin: 0 0 2rem 4.5rem;
+        font-size: $font-size-medium;
+        @include respond(phone) {
+            margin-left: 0;
+        }
+    }
+    .how__number-box {
+        width: 10rem;
+        height: 17rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        .how__number-img {
+            width: 100%;
+            height: 100%;
+            
+        }
+    }
+}
+
+.how__position--absolute {
+    position: absolute;
+}
+
+.tree {
+    bottom: -6rem;
+    left: 30rem;
+    @include respond(phone) {
+        top: 8rem;
+        right: 0;
+        bottom: 0;
+        left: 7rem;  
+    }
+    .tree__number {
+        display: none;
+    }
+}
+
+.follow {
+    top: 15rem;
+    left: 80rem;
+    @include respond(phone) {
+    top: 38rem;
+    left: 0rem;
+    }
+    .follow__info-box {
+        @include respond(phone) {
+            width: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row-reverse;
+            text-align: right;
+            .follow__number {
+                display: none;
+            }
+        }
+        
+    }
+}
+
+.gain {
+    right: 20rem;
+    top: -3rem;
+    @include respond(phone) {
+        right: 0rem;
+        top: 70rem;
+        left: 5rem;
+    }
+    .gain__info-box {
+        @include respond(phone) {
+           
+        }
+    }
+    .gain__number {
+        @include respond(phone) {
+            display: none;
+        }
     }
 }
